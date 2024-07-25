@@ -16,7 +16,7 @@ public class Table {
         return this.title;
     }
 
-    public String setTitle(String title){
+    public void setTitle(String title){
         this.title = title;
     }
 
@@ -25,6 +25,8 @@ public class Table {
         matrix.add(line[0]);
         matrix.add(line[1]);
         data.add(matrix);
+
+        return "aa";
     }
 
     public String[][] getData(ArrayList<ArrayList<String>> data){

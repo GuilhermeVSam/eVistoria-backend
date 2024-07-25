@@ -5,7 +5,12 @@ import com.example.evistoriador.service.EVistoriadorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedReader;
+import java.io.IOException;
+
 @RestController
+@CrossOrigin(origins = "http://127.0.0.1:5173")
 public class EVistoriadorController {
     private EVistoriadorService service;
 
@@ -14,14 +19,24 @@ public class EVistoriadorController {
         return String.format("Hello %s!", name);
     }
 
-    @PostMapping("/")
+    @GetMapping("/generateDoc")
+    public void generateDoc(@RequestParam(value = "input1") String input1){
+        service.generateDoc(input1);
+    }
+
+    @PostMapping("/pdf")
     public ResponseEntity<byte[]> generateDoc(@RequestBody DocumentRequest request){
-        service.generateDoc(String.valueOf(request));
-        return ResponseEntity.ok().body(request.getInput1().getBytes());
+        return null;
     }
 
     public ResponseEntity<byte[]> generatePdf(@RequestBody DocumentRequest request){
         service.generatePdf(String.valueOf(request));
-        return ResponseEntity.ok().body(request.getInput1().getBytes());
+        return null;
+    }
+
+    @PostMapping("/logJson")
+    public ResponseEntity<String> logJson(@RequestBody String jsonPayload) throws IOException {
+        System.out.println("Received JSON: " + jsonPayload);
+        return ResponseEntity.ok("{\"status\":\"success\"}");
     }
 }
