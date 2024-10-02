@@ -12,7 +12,7 @@ import java.io.IOException;
 @RestController
 @CrossOrigin(origins = "http://127.0.0.1:5173")
 public class EVistoriadorController {
-    private EVistoriadorService service;
+    private EVistoriadorService service = new EVistoriadorService();
 
     @GetMapping("/hello")
     public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
@@ -21,6 +21,8 @@ public class EVistoriadorController {
 
     @GetMapping("/generateDoc")
     public void generateDoc(@RequestParam(value = "input1") String input1){
+        System.out.println("Hello World");
+        System.out.println("AAA");
         service.generateDoc(input1);
     }
 
@@ -36,7 +38,7 @@ public class EVistoriadorController {
 
     @PostMapping("/logJson")
     public ResponseEntity<String> logJson(@RequestBody String jsonPayload) throws IOException {
-        System.out.println("Received JSON: " + jsonPayload);
-        return ResponseEntity.ok("{\"status\":\"success\"}");
+        service.logJson(jsonPayload);
+        return null;
     }
 }

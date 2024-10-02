@@ -1,26 +1,52 @@
 package com.example.evistoriador.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TableData{
-    private String title;
-    private ArrayList<String> lines;
+    private List<Table> tables;
 
-    public TableData() {}
-
-    public String getTitle() {
-        return title;
+    public List<Table> getTables() {
+        return tables;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTables(List<Table> tables) {
+        this.tables = tables;
     }
 
-    public ArrayList<String> getLines() {
-        return lines;
+    @Override
+    public String toString() {
+        return "TableData{" +
+                "tablesData=" + tables +
+                '}';
     }
 
-    public void setLines(ArrayList<String> lines) {
-        this.lines = lines;
+    public static class Table {
+        private String title;
+        private List<String> fields;
+
+        public String getTitle(){
+            return title;
+        }
+
+        public void setTitle(String title){
+            this.title = title;
+        }
+
+        public List<String> getFields() {
+            return fields;
+        }
+
+        public void setFields(List<String> fields) {
+            this.fields = fields;
+        }
+
+        @Override
+        public String toString() {
+            return "Table{" +
+                    "title='" + title + '\'' +
+                    ", fields=" + fields +
+                    '}';
+        }
     }
 }

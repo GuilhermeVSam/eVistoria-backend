@@ -15,10 +15,6 @@ public class DocumentData{
     private int bathrooms;
     private int parking;
 
-    public DocumentData(String data){
-
-    }
-
     public InspectionType getInspectionType() {
         return inspectionType;
     }
